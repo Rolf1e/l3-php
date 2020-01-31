@@ -16,14 +16,14 @@
 		}
 
 		private function loadLayout(){
-			$this->header = $this->setHeader('Contact Page');
+			$this->header = $this->setHeader('Contact Page', '<link>');
 			$this->footer = $this->setFooter('Flooter');
 		}
 
 		// Set up our components
-		private function setHeader($title):Header{
+		private function setHeader($title, $core = ''):Header{
 			$header = new Header($title);
-			$header->setCore('<link>');
+			$header->setCore($core);
 
 			return $header;
 		}
