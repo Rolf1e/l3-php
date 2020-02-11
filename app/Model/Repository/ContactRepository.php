@@ -36,6 +36,12 @@
 			echo '<p>' . $select . '</p>';
 			var_dump( $this->conn->query($select));
 		}
+
+		function extractall() {
+			$select = $this->conn->selectDB('contact', ['nom', 'prenom']);
+			var_dump($this->conn->query($select));
+
+		}
 	}
 
 ?>
