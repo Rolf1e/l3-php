@@ -7,7 +7,14 @@ J'ai choisi de construire l'architecture de mes pages autour de Composants.
 Celle ci permet à l'utilisateur de pouvoir facilement créer / modifier ses propres composants sans interférer 
 avec le fonctionnement effectif du site. L' utilisateur n'a plus qu'a hériter l'interface et le comportement des controleurs ne sera pas altérer.
 
+## Create Table :
 
+``create table contact (
+	id int auto_increment unsigned primary key,
+	nom varchar(30) not null,
+	prenom varchar(30) not null
+);
+``
 
 
 

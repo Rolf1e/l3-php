@@ -1,9 +1,17 @@
 <div>Mon contact </div>
 
-<form action="action.php" method="POST">
+<form action="/contact/save" method="POST">
 	<label for="firstname">Nom : </label>
 	<input type="text" name="firstname">
 	<label for="lastname">Prénom </label>
 	<input type="text" name="lastname">
-	<input type="submit" value="OK">
+	<input type="submit" value="insert">
+</form>
+
+<form action="/contact/extract" method="POST">
+	<label for="firstname">Nom : </label>
+	<input type="text" name="firstname">
+	<label for="lastname">Prénom </label>
+	<input type="text" name="lastname">
+	<input type="submit" value="extract">
 </form>

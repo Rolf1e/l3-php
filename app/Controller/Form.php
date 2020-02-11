@@ -12,13 +12,13 @@
 		}
 
 		public function index() {
-			$this->render();
+			$this->render()
 		}
 
 
 		private function loadLayout() {
-			$this->header = $this->setHeader('Form Page');
-			$this->footer = $this->setFooter('Footer');
+			$this->header = setHeader('Form Page');
+			$this->footer = setFooter('Footer');
 		}
 
 		private function setHeader($title, $core = '') {
