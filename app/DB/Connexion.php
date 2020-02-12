@@ -18,7 +18,7 @@
 		}
 
 		static function connexion($auth) {
-			return new \PDO('mysql:host=' . $auth->getHost() . ';dbname=' . $auth->getDatabase(), $auth->getUser(), $auth->getPwd());
+			return new \PDO(DB_SYS . ':host=' . $auth->getHost() . ';dbname=' . $auth->getDatabase(), $auth->getUser(), $auth->getPwd());
 		}
 
 		function selectDB($table, $fields) {

@@ -33,15 +33,28 @@
 		function extract() {
 			$contactForm = $this->retrieveContact();
 			$select = $this->conn->selectDBWithCondition('contact', ['nom', 'prenom'], 'nom LIKE \'Tigran\'');
-			echo '<p>' . $select . '</p>';
-			var_dump( $this->conn->query($select));
+			$result = $this->conn->query($select);
+			return new ContactForm($result['prenom'], $value['nom']);
 		}
 
 		function extractall() {
 			$select = $this->conn->selectDB('contact', ['nom', 'prenom']);
-			var_dump($this->conn->query($select));
+			$result = $this->conn->query($select);
+			$this->parsingResultQuery($result);
 
 		}
+
+		function parsingResultQuery($resultQuery) {
+			$contacts = [];
+			foreach ($resultQuery as $value) {
+				array_push($contacts, new ContactForm($value['prenom'], $value['nom']));
+			}
+			return $contacts;
+		}
+
+
 	}
+
+
 
 ?>
