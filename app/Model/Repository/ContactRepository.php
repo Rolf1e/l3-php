@@ -32,22 +32,21 @@
 
 		function extract() {
 			$contactForm = $this->retrieveContact();
-			$select = $this->conn->selectDBWithCondition('contact', ['nom', 'prenom'], ' nom ' . ' LIKE \'' . $_POST['name'] . '\' and prenom LIKE \'' . $_POST['firstname'] . '\'');
+			$select = $this->conn->selectDBWithCondition('contact', ['id', 'nom', 'prenom'], ' nom ' . ' LIKE \'' . $_POST['name'] . '\' and prenom LIKE \'' . $_POST['firstname'] . '\'');
 			$result = $this->conn->query($select);
 			return new ContactForm($result[0]['prenom'], $result[0]['nom']);
 		}
 
 		function extractall() {
-			$select = $this->conn->selectDB('contact', ['nom', 'prenom']);
+			$select = $this->conn->selectDB('contact', ['id', 'nom', 'prenom']);
 			$result = $this->conn->query($select);
-			$this->parsingResultQuery($result);
-
+			return $this->parsingResultQuery($result);
 		}
 
 		function parsingResultQuery($resultQuery) {
 			$contacts = [];
 			foreach ($resultQuery as $value) {
-				array_push($contacts, new ContactForm($value['prenom'], $value['nom']));
+				array_push($contacts, new ContactForm($value['prenom'], $value['nom'], $value['id']));
 			}
 			return $contacts;
 		}

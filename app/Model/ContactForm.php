@@ -4,14 +4,15 @@
 
 	class ContactForm 
 	{
-		
+		private $id;
 		private $firstname;
 		private $name;
 
-		function __construct($firstname, $name)
+		function __construct($firstname, $name, $id)
 		{
 			$this->firstname = $firstname;
 			$this->name = $name;
+			$this->id = $id;
 		}
 
 		public function getFirstName() {
@@ -29,6 +30,16 @@
 
 		public function setName($name) {
 			$this->name = $name;
+			return $this;
+		}
+
+
+		public function getId() {
+			return $this->id;
+		}
+
+		public function setId($id) {
+			$this->id = $id;
 			return $this;
 		}
 	}

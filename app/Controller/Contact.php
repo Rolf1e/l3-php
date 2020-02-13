@@ -5,6 +5,7 @@
 	use App\Controller\Component\Header;
 	use App\Controller\Component\Footer;
 	use App\Model\Repository\ContactRepository;
+	use App\Model\ContactForm;
 
 	class Contact extends ControllerAbstract {
 
@@ -25,8 +26,14 @@
 
 		public function showAll() {
 			$contactRepository = new ContactRepository();
-			$this->contactForm = $contactRepository->extractAll();
-			include_once 'app/template/contact.pthml';
+			$contacts = $contactRepository->extractAll();
+			foreach ($contacts as $contact) {
+				echo '<div>';
+				echo '<p> id :' . $contact->getId() . '</p>';
+				echo '<p> Nom :' .  $contact->getName() . '</p>';
+				echo '<p> Prenom :' .  $contact->getFirstName() . '</p>';
+				echo '</div>';
+			}
 
 		}
 
