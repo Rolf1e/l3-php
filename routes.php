@@ -2,9 +2,9 @@
 	return  [
 			'' => ['App\Controller\Contact' => 'index'],
 			'/contact' => ['App\Controller\Contact' => 'index'],
-			'/contactform' => ['App\Controller\Contact' => 'render'],
+			'/contactform' => ['App\Controller\ContactForm' => 'render'],
 			'/contact/save' => ['App\Model\Repository\ContactRepository' => 'save'],
-			'/contact/extract' => ['App\Model\Repository\ContactRepository' => 'extract'],
-			'/contact/extractall' => ['App\Model\Repository\ContactRepository' => 'extractall']
+			'/contact/extract' => ['App\Controller\Contact' => 'show'],
+			'/contact/extractall' => ['App\Controller\Contact' => 'showAll']
 		];
 ?>

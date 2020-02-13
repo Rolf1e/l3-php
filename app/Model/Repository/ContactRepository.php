@@ -20,7 +20,7 @@
 		}
 
 		private function retrieveContact() {
-			return new ContactForm($_POST['firstname'], $_POST['lastname']);
+			return new ContactForm($_POST['firstname'], $_POST['name']);
 		}
 
 		function save() {
@@ -32,9 +32,9 @@
 
 		function extract() {
 			$contactForm = $this->retrieveContact();
-			$select = $this->conn->selectDBWithCondition('contact', ['nom', 'prenom'], 'nom LIKE \'Tigran\'');
+			$select = $this->conn->selectDBWithCondition('contact', ['nom', 'prenom'], ' nom ' . ' LIKE \'' . $_POST['name'] . '\' and prenom LIKE \'' . $_POST['firstname'] . '\'');
 			$result = $this->conn->query($select);
-			return new ContactForm($result['prenom'], $value['nom']);
+			return new ContactForm($result[0]['prenom'], $result[0]['nom']);
 		}
 
 		function extractall() {

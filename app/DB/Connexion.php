@@ -32,9 +32,11 @@
 			return $query . ' FROM ' . $table . ';';
 		}
 
-		function selectDBWithCondition($table, $fields, $conditions) {
+		function selectDBWithCondition($table, $fields, $conditions=null) {
 			$query = $this->selectDB($table, $fields);
-
+			if($conditions == null) {
+				return $query;
+			}
 			$query = rtrim($query, ';');
 
 			return $query . ' WHERE ' . $conditions . ';';

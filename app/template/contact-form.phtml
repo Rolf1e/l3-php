@@ -1,18 +1,18 @@
 <div>Mon contact </div>
 
 <form action="/contact/save" method="POST">
-	<label for="firstname">Nom : </label>
+	<label for="name">Nom : </label>
+	<input type="text" name="name">
+	<label for="firstname">Prénom </label>
 	<input type="text" name="firstname">
-	<label for="lastname">Prénom </label>
-	<input type="text" name="lastname">
 	<input type="submit" value="insert">
 </form>
 
 <form action="/contact/extract" method="POST">
-	<label for="firstname">Nom : </label>
+	<label for="name">Nom : </label>
+	<input type="text" name="name">
+	<label for="firstname">Prénom </label>
 	<input type="text" name="firstname">
-	<label for="lastname">Prénom </label>
-	<input type="text" name="lastname">
 	<input type="submit" value="extract">
 </form>
 
