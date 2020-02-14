@@ -30,14 +30,21 @@
 			$this->conn->exec($insert);
 		}
 
+		function showFromId($link) {
+            $explodedLink = explode("/", $link);
+            $select = $this->conn->selectDBWithCondition('contact', ['nom','id','prenom'] , ' id LIKE \'' . end($explodedLink) . '\'');
+            $result = $this->conn->query($select);
+            return new ContactForm($result[0]['prenom'], $result[0]['nom'], $result[0]['id']);
+        }
+
 		function extract() {
 			$contactForm = $this->retrieveContact();
-			$select = $this->conn->selectDBWithCondition('contact', ['id', 'nom', 'prenom'], ' nom ' . ' LIKE \'' . $_POST['name'] . '\' and prenom LIKE \'' . $_POST['firstname'] . '\'');
+			$select = $this->conn->selectDBWithCondition('contact', ['id', 'nom', 'prenom'], ' nom ' . ' LIKE \'' . $contactForm->getName() . '\' and prenom LIKE \'' . $contactForm->getFirstName() . '\'');
 			$result = $this->conn->query($select);
 			return new ContactForm($result[0]['prenom'], $result[0]['nom'], $result[0]['id']);
 		}
 
-		function extractall() {
+		function extractAll() {
 			$select = $this->conn->selectDB('contact', ['id', 'nom', 'prenom']);
 			$result = $this->conn->query($select);
 			return $this->parsingResultQuery($result);

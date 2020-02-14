@@ -24,6 +24,12 @@
 			include_once 'app/template/contact.phtml';
 		}
 
+		public function fromId($link) {
+            $contactRepository = new ContactRepository();
+            $this->contactForm = $contactRepository->showFromId($link);
+            include  'app/template/contact.phtml';
+        }
+
 		public function showAll() {
 			$contactRepository = new ContactRepository();
 			$contacts = $contactRepository->extractAll();
