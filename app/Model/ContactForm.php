@@ -8,7 +8,7 @@
 		private $firstname;
 		private $name;
 
-		function __construct($firstname, $name, $id)
+		function __construct($firstname, $name, $id = null)
 		{
 			$this->firstname = $firstname;
 			$this->name = $name;
